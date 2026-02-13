@@ -3,6 +3,7 @@
     "ssh2-sftp-client": "^12.0.1"
   },
   "scripts": {
+    "postinstall": "node scripts/install.js",
     "deploy": "node scripts/deploy-service.js"
   }
 }
