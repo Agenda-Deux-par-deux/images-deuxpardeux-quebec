@@ -15,8 +15,12 @@ if(!$config = json_decode(@file_get_contents(__DIR__ . '/config.json'))) {
 
 // Envoyer sur la page d'accueil les requêtes autre que POST ou OPTIONS 
 if(!in_array($_SERVER['REQUEST_METHOD'], ['OPTIONS', 'POST'])) {
-	if(is_file(($service = __DIR__ . '/service.html'))) readfile(__DIR__ . '/service.html');
-	else {
+	if(is_file(($service = __DIR__ . '/service.html'))) {
+		header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0, private');
+		header('Pragma: no-cache');
+		header('Expires: 0');
+		readfile(__DIR__ . '/service.html');
+	} else {
 		header("HTTP/1.0 404 Avez-vous perdu votre poisson ?");
 		readfile(__DIR__ . '/404.html');	
 	}	
