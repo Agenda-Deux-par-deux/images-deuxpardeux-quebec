@@ -1,0 +1,42 @@
+##
+# Titre:  Webservice simple pour dépot d'images
+# Auteur: Maxime Larrivée-Roy <mlarriveeroy@gmail.com>
+# Date:   7 septembre 2025
+##
+
+
+# Sécurise la vue des dossiers
+Options -MultiViews -Indexes
+
+
+# Permet de réécrire les paths
+RewriteEngine On
+
+
+# 404 Aquarium
+ErrorDocument 404 /404.html
+
+
+# Protège les fichiers de configuration
+RewriteRule ^404\.html$ - [L]
+RewriteRule ^[^/]+\.(json|html)$ - [R=404,L]
+RewriteRule ^[^/]*deploy\.js$ - [R=404,L]
+
+
+# Passe tout droit si le fichier existe tel quel
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+
+# Décompose et recompose le path des fichiers
+RewriteCond %{DOCUMENT_ROOT}/images/$2/$3/$4/$1.$6 -f
+RewriteRule ^(([A-Za-z0-9_-]{2})([A-Za-z0-9_-]{2})([A-Za-z0-9_-]{2})([A-Za-z0-9_-]{2}))\.(webp|avif|png|jpe?g|gif)$ images/$2/$3/$4/$1.$6 [L]
+
+
+# Le / va toujours à index.php (juste pour être sur)
+RewriteRule ^$ index.php [L]
+
+
+# Interdire l’accès direct au chemin physique /images/
+RewriteRule ^images/ - [R=404,L]

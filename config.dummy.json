@@ -1,0 +1,24 @@
+{
+	"tokens": [
+		"BearerToken91",
+		"BearerToken65",
+		"BearerToken34",
+		"BearerToken76",
+		"Utilise une db de tokens à la place"
+	],
+	"allowed": [
+		"http://127.0.0.1:5503",
+		"http://localhost:5503",
+		"https://action-quebec.github.io",
+		"https://images.action.quebec",
+		"https://action.quebec"
+	],
+	"accepted": [
+		"image/jpeg",
+		"image/png",
+		"image/webp",
+		"image/gif",
+		"image/avif"
+	],
+	"maxsize": 5242880
+}
