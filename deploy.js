@@ -8,16 +8,11 @@ const sftp = new SftpClient();
 const DRY_RUN = process.argv.includes("--dry");
 
 const SYNC = [
-  { local: "scripts", remote: "scripts" },
-  { local: "styles", remote: "styles" },
   { local: ".htaccess", remote: ".htaccess" },
   { local: "404.html", remote: "404.html" },
-  { local: "bt1oh97j7X.bin", remote: "bt1oh97j7X.bin" },
   { local: "config.json", remote: "config.json" },
   { local: "favicon.ico", remote: "favicon.ico" },
   { local: "index.php", remote: "index.php" },
-  { local: "service.html", remote: "service.html" },
- 
 ];
 
 
